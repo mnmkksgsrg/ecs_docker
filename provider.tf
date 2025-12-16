@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">=1.14.0"
+  required_version = ">=1.12.0"
 
   required_providers {
     aws = {
@@ -12,13 +12,16 @@ terraform {
 provider "aws" {
   region = "ap-northeast-1"
 
-  default_tags = {
-    Project     = "terraform_ecs"
-    Environment = "stg"
-    ManagedBy   = "Terraform"
-    Owner       = "mnmkksgsrg"
+  default_tags {
+    tags = {
+      Project     = "terraform_ecs"
+      Environment = "stg"
+      ManagedBy   = "Terraform"
+      Owner       = "mnmkksgsrg"
+    }
   }
 }
+
 
 
 
