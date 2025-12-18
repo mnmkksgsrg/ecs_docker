@@ -47,7 +47,7 @@ resource "aws_ecs_service" "this" {
   name            = "my_ecs_service"
   cluster         = aws_ecs_cluster.this.id
   task_definition = aws_ecs_task_definition.this.arn
-  desired_count   = 0
+  desired_count   = 1
 
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
@@ -55,9 +55,9 @@ resource "aws_ecs_service" "this" {
   }
 
   network_configuration {
-    subnets          = [for s in aws_subnet.public : s.id]
+    subnets          = [for s in aws_subnet.private : s.id]
     security_groups  = [aws_security_group.ecs.id]
-    assign_public_ip = true
+    assign_public_ip = false
   }
 
   load_balancer {

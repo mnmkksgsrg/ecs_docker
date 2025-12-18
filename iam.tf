@@ -11,7 +11,7 @@ data "aws_iam_policy_document" "this" {
 
 resource "aws_iam_role" "task_execution" {
   name               = "my_iam_role_task_execution"
-  description = "To pull images from ECR and send logs to CloudWatch"
+  description        = "To pull images from ECR and send logs to CloudWatch"
   assume_role_policy = data.aws_iam_policy_document.this.json
 }
 
