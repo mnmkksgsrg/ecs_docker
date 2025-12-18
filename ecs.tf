@@ -8,7 +8,7 @@ resource "aws_cloudwatch_log_group" "this" {
 }
 
 resource "aws_ecs_task_definition" "this" {
-  family                   = "my-"
+  family                   = "my_task_definition"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
   cpu                      = "256"
